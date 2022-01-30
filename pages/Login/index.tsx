@@ -1,16 +1,22 @@
-//import { LinearGradient } from "expo-linear-gradient";
-
 import { Box, Image, Center } from "native-base";
-import { Alert } from "react-native"
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { MyTextField } from "../../components/myTextField";
-import { MyButton } from "../../components/button/index";
+import { MyButton } from "../../components/myButton/index";
 import LogoImg from "../../assets/Logos.png"
 
 export default function LoginPage() {
 
   const { register, setValue, handleSubmit } = useForm();
+
+  type userType = {
+
+    name: string,
+    password: string,
+
+  }
+
+  const [user, setUser] = useState<userType>();
 
   useEffect(() => {
     register('email')
@@ -19,6 +25,7 @@ export default function LoginPage() {
 
   const onSubmit = (data: any) => {
     console.log('Email: ' + data.email + "\n Password: " + data.password)
+    setUser(data)
   }
 
   return (
@@ -29,6 +36,7 @@ export default function LoginPage() {
         source={LogoImg} alt="Alternate Text" />
 
       <Box width={200}>
+
         <MyTextField
           isFullWidth
           label={"Email"}
@@ -52,6 +60,7 @@ export default function LoginPage() {
           onPress={handleSubmit(onSubmit)}>
           Continuar
         </MyButton>
+
       </Box>
     </Center>
   )

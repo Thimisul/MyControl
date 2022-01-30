@@ -21,8 +21,9 @@ export default function App() {
 
   return (
     <NativeBaseProvider theme={theme}>
-      <LoginPage></LoginPage>
-      {/* <TransactionPage></TransactionPage> */}
+      {/* <LoginPage></LoginPage> */}
+      <TransactionPage></TransactionPage>
+
     </NativeBaseProvider >
 
   )
